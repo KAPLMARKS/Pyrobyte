@@ -21,6 +21,12 @@ class _RowListWidgetState extends State<DynamicList> {
                 child: TextField(
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFFD9E2F1),
+                      ),
+                    ),
+                    border: OutlineInputBorder(),
                     hintText: 'Enter a number',
                   ),
                 ),
@@ -29,10 +35,17 @@ class _RowListWidgetState extends State<DynamicList> {
                 child: TextField(
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFFD9E2F1),
+                      ),
+                    ),
+                    border: OutlineInputBorder(),
                     hintText: 'Enter a number',
                   ),
                 ),
               ),
+              const Spacer(),
               IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () {
@@ -61,7 +74,7 @@ class _RowListWidgetState extends State<DynamicList> {
         ),
         OutlinedButton(
           onPressed: addRow,
-          child: const Text('Добавить элемент'),
+          child: const Text('Добавить строку'),
         ),
       ],
     );
