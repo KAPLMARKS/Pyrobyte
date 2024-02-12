@@ -11,7 +11,14 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pyrobyte',
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFFF1F1F9),
+          iconTheme: IconThemeData(
+            color: Color(0xFF333333),
+          ),
+        ),
         scaffoldBackgroundColor: const Color(0xFFF1F1F9),
+        primaryColor: const Color(0xFF333333),
         useMaterial3: true,
       ),
       home: const Atm(),

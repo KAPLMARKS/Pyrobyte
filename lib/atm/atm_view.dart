@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pyrobyte/atm/components/checkbox.dart';
+import 'package:pyrobyte/atm/components/custom_bottom_sheet.dart';
+import 'package:pyrobyte/atm/components/custom_outlined_button.dart';
 import 'package:pyrobyte/atm/components/event.dart';
-import 'package:pyrobyte/atm/components/togglebuttons.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
+import 'package:pyrobyte/atm/components/finance_card.dart';
+import 'package:pyrobyte/atm/components/loading_widget.dart';
+import 'package:pyrobyte/atm/components/subtitile_widget.dart';
 
 class Atm extends StatelessWidget {
   const Atm({super.key});
@@ -12,19 +13,16 @@ class Atm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F1F9),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(
             Icons.arrow_back,
-            color: Color(0xFF333333),
           ),
         ),
         actions: [
           IconButton(
             icon: const Icon(
               Icons.settings,
-              color: Color(0xFF333333),
             ),
             onPressed: () {
               showModalBottomSheet<void>(
@@ -32,235 +30,7 @@ class Atm extends StatelessWidget {
                 isScrollControlled: true,
                 useSafeArea: true,
                 builder: (BuildContext context) {
-                  return FractionallySizedBox(
-                    heightFactor: 0.95,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Scaffold(
-                        appBar: AppBar(
-                          backgroundColor: const Color(0xFFF1F1F9),
-                          automaticallyImplyLeading: false,
-                          title: const Text(
-                            'Загрузка',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xFF333333),
-                            ),
-                          ),
-                          actions: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.close),
-                              iconSize: 24,
-                            ),
-                          ],
-                        ),
-                        body: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Card(
-                              color: const Color(0x1400BE08),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: SizedBox(
-                                  height: 80,
-                                  child: Row(
-                                    children: [
-                                      Image(
-                                        image:
-                                            AssetImage('lib/assets/check.png'),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        'Изменения от 12.07.2021, 12:30\nприменены успешно',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w300,
-                                          color: Color(0xFF333333),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(0, 32, 16, 8),
-                              child: Text(
-                                'Decimal position',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 40,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Flexible(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFFD9E2F1),
-                                          ),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        label: Text(
-                                          'Cash',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300,
-                                            color: Color(0xFF999999),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 16),
-                                  Flexible(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFFD9E2F1),
-                                          ),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        label: Text(
-                                          'Cashless',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300,
-                                            color: Color(0xFF999999),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(0, 32, 16, 8),
-                              child: Text(
-                                'Scale factor',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 40,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Flexible(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFFD9E2F1),
-                                          ),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        label: Text(
-                                          'Cash',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300,
-                                            color: Color(0xFF999999),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 16),
-                                  Flexible(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFFD9E2F1),
-                                          ),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        label: Text(
-                                          'Cashless',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300,
-                                            color: Color(0xFF999999),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            const Row(
-                              children: [
-                                CheckboxExample(),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                Text(
-                                  'Включить звук',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300,
-                                    color: Color(0xFF999999),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.fromLTRB(0, 32, 16, 8),
-                              child: Text(
-                                'Режим мастер',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: ToggleButtonsSample(),
-                                ),
-                              ],
-                            ),
-                             const Padding(
-                              padding: EdgeInsets.fromLTRB(0, 32, 16, 8),
-                              child: Text(
-                                'Прайс листы',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+                  return const CustomBottomSheet();
                 },
               );
             },
@@ -284,62 +54,14 @@ class Atm extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: _VendingItem(),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 24, 20, 0),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
-                  elevation: 2,
-                  child: SizedBox(
-                    height: 160,
-                    width: 160,
-                    child: Stack(
-                      children: [
-                        WaveWidget(
-                          config: CustomConfig(
-                            colors: [
-                              const Color(0x7A218CEF),
-                            ],
-                            durations: [18000],
-                            heightPercentages: [0.15],
-                          ),
-                          size: const Size(double.infinity, double.infinity),
-                          waveAmplitude: 0,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '85%',
-                                style: TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                              Spacer(),
-                              Text(
-                                'Текущий уровень\nзагрузки',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
+                LoadingWidget(percentage: 85),
+                SizedBox(
                   width: 16,
                 ),
                 Expanded(
@@ -348,66 +70,18 @@ class Atm extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          side: const BorderSide(
-                            color: Color(0xFF218CEF),
-                          ),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8),
-                          child: Text(
-                            'Загрузка',
-                            style: TextStyle(
-                              color: Color(0xFF218CEF),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
+                      CustomOutlinedButton(text: 'Загрузка'),
+                      SizedBox(
                         height: 16,
                       ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          side: const BorderSide(
-                            color: Color(0xFF218CEF),
-                          ),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: Text(
-                            'Инвентаризация',
-                            style: TextStyle(
-                              color: Color(0xFF218CEF),
-                            ),
-                          ),
-                        ),
-                      ),
+                      CustomOutlinedButton(text: 'Инветаризация')
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Text(
-              'Cобытия',
-              style: TextStyle(
-                color: Color(0xFF333333),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
+          const SubtitleWidget(title: 'События'),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -456,142 +130,26 @@ class Atm extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Text(
-              'Финансы',
-              style: TextStyle(
-                color: Color(0xFF333333),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
+          const SubtitleWidget(title: 'Финансы'),
           SizedBox(
             height: 72,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4)),
-                    elevation: 2,
-                    color: const Color(0xFFFFFFFF),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image(
-                            image: AssetImage('lib/assets/Money.png'),
-                          ),
-                          SizedBox(width: 8),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '5700 ₽',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                              Text(
-                                'Деньги в ТА',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4)),
-                    elevation: 2,
-                    color: const Color(0xFFFFFFFF),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Image(
-                            image: AssetImage('lib/assets/Cashback.png'),
-                          ),
-                          SizedBox(width: 8),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '1255 ₽',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                              Text(
-                                'Сдача',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4)),
-                    elevation: 2,
-                    color: const Color(0xFFFFFFFF),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Image(
-                            image: AssetImage('lib/assets/Money.png'),
-                          ),
-                          SizedBox(width: 8),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '5700 ₽',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                              Text(
-                                'Деньги в ТА',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Color(0xFF333333),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                children: const [
+                  FinanceCard(
+                      imageSrc: 'lib/assets/Money.png',
+                      title: '5700 ₽',
+                      description: 'Деньги в ТА'),
+                  FinanceCard(
+                      imageSrc: 'lib/assets/Cashback.png',
+                      title: '1255 ₽',
+                      description: 'Сдача'),
+                  FinanceCard(
+                      imageSrc: 'lib/assets/Money.png',
+                      title: '5700 ₽',
+                      description: 'Деньги в ТА'),
                 ],
               ),
             ),

@@ -11,7 +11,7 @@ class _ToggleButtonsSampleState extends State<ToggleButtonsSample> {
   final List<Widget> modes = <Widget>[
     const Padding(
       padding: EdgeInsets.symmetric(horizontal: 32),
-      child: Text('Изпользуется'),
+      child: Text('Используется'),
     ),
     const Padding(
       padding: EdgeInsets.symmetric(horizontal: 32),
@@ -25,6 +25,7 @@ class _ToggleButtonsSampleState extends State<ToggleButtonsSample> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
+      width: double.infinity,
       child: ToggleButtons(
         onPressed: (int index) {
           setState(() {
