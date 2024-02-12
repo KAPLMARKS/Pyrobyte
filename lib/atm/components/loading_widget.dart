@@ -41,49 +41,60 @@ class _LoadingWidgetState extends State<LoadingWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-      elevation: 2,
-      child: SizedBox(
-        height: 160,
-        width: 160,
-        child: Stack(
-          children: [
-            WaveWidget(
-              config: CustomConfig(
-                colors: [const Color(0x7A218CEF)],
-                durations: [18000],
-                heightPercentages: [(100 - _animation.value) / 100],
+    return SizedBox(
+      height: 160,
+      width: 160,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: DecoratedBox(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, 2),
+                blurRadius: 4,
+                color: Color(0x0A005BA9),
               ),
-              size: const Size(double.infinity, double.infinity),
-              waveAmplitude: 0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${_animation.value.toInt()}%',
-                    style: const TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFF333333),
-                    ),
-                  ),
-                  const Spacer(),
-                  const Text(
-                    'Текущий уровень\nзагрузки',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF333333),
-                    ),
-                  ),
-                ],
+            ],
+          ),
+          child: Stack(
+            children: [
+              WaveWidget(
+                config: CustomConfig(
+                  colors: [const Color(0x7A218CEF)],
+                  durations: [18000],
+                  heightPercentages: [(100 - _animation.value) / 100],
+                ),
+                size: const Size(double.infinity, double.infinity),
+                waveAmplitude: 0,
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${_animation.value.toInt()}%',
+                      style: const TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF333333),
+                      ),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      'Текущий уровень\nзагрузки',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF333333),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

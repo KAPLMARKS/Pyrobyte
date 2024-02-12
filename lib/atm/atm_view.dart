@@ -38,122 +38,108 @@ class Atm extends StatelessWidget {
         ],
       ),
       body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(20, 8, 20, 24),
-            child: Text(
-              'Торговые автоматы',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 24,
-                color: Color(0xFF333333),
-              ),
+          const Text(
+            'Торговые автоматы',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 24,
+              color: Color(0xFF333333),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: _VendingItem(),
-          ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                LoadingWidget(percentage: 85),
-                SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      CustomOutlinedButton(text: 'Загрузка'),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      CustomOutlinedButton(text: 'Инветаризация')
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SubtitleWidget(title: 'События'),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          const SizedBox(height: 16),
+          const _VendingItem(),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Event(time: '14:00', title: 'Cейф переполнен'),
-              ),
-              const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Event(
-                  time: '11:20',
-                  title: 'Cломался купюроприемник',
-                  description: '2341245',
-                ),
-              ),
-              const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Event(
-                  time: '11:20',
-                  title: 'Закончилась наличка',
-                  description: 'Toshiba снековый',
-                ),
-              ),
-              const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+              const LoadingWidget(percentage: 85),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CustomOutlinedButton(
+                      text: 'Загрузка',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      height: 48,
+                      onPressed: () {},
                     ),
-                    side: const BorderSide(
-                      color: Color(0xFF218CEF),
+                    const SizedBox(
+                      height: 16,
                     ),
-                  ),
-                  child: const Text(
-                    'Смотреть еще',
-                    style: TextStyle(
-                      color: Color(0xFF218CEF),
-                    ),
-                  ),
+                    CustomOutlinedButton(
+                      text: 'Инветаризация',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      height: 48,
+                      onPressed: () {},
+                    )
+                  ],
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 16),
+          const SubtitleWidget(title: 'События'),
+          const SizedBox(height: 16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Event(time: '14:00', title: 'Cейф переполнен'),
+              const SizedBox(height: 8),
+              const Event(
+                time: '11:20',
+                title: 'Cломался купюроприемник',
+                description: '2341245',
+              ),
+              const SizedBox(height: 8),
+              const Event(
+                time: '11:20',
+                title: 'Закончилась наличка',
+                description: 'Toshiba снековый',
+              ),
+              const SizedBox(height: 16),
+              CustomOutlinedButton(
+                text: 'Cмотреть еще',
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                height: 32,
+                onPressed: () {},
+              )
+            ],
+          ),
+          const SizedBox(height: 16),
           const SubtitleWidget(title: 'Финансы'),
+          const SizedBox(height: 16),
           SizedBox(
             height: 72,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: const [
-                  FinanceCard(
-                      imageSrc: 'lib/assets/Money.png',
-                      title: '5700 ₽',
-                      description: 'Деньги в ТА'),
-                  FinanceCard(
-                      imageSrc: 'lib/assets/Cashback.png',
-                      title: '1255 ₽',
-                      description: 'Сдача'),
-                  FinanceCard(
-                      imageSrc: 'lib/assets/Money.png',
-                      title: '5700 ₽',
-                      description: 'Деньги в ТА'),
-                ],
-              ),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: const [
+                FinanceCard(
+                    imageSrc: 'lib/assets/Money.png',
+                    title: '5700 ₽',
+                    description: 'Деньги в ТА'),
+                SizedBox(width: 8),
+                FinanceCard(
+                    imageSrc: 'lib/assets/Cashback.png',
+                    title: '1255 ₽',
+                    description: 'Сдача'),
+                SizedBox(width: 8),
+                FinanceCard(
+                    imageSrc: 'lib/assets/Money.png',
+                    title: '5700 ₽',
+                    description: 'Деньги в ТА'),
+              ],
             ),
-          )
+          ),
+          const SizedBox(height: 64),
         ],
       ),
     );
@@ -165,14 +151,20 @@ class _VendingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
+    return DecoratedBox(
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
+        color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(0, 2),
+            blurRadius: 4,
+            color: Color(0x0A005BA9),
+          ),
+        ],
       ),
-      color: const Color(0xFFFFFFFF),
       child: const Padding(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -197,19 +189,17 @@ class _VendingItem extends StatelessWidget {
             ),
             Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(right: 8),
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF97879),
-                      shape: BoxShape.circle,
-                    ),
-                    child: SizedBox(
-                      height: 8,
-                      width: 8,
-                    ),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF97879),
+                    shape: BoxShape.circle,
+                  ),
+                  child: SizedBox(
+                    height: 8,
+                    width: 8,
                   ),
                 ),
+                SizedBox(width: 8),
                 Text(
                   'Не работает',
                   style: TextStyle(
@@ -233,89 +223,51 @@ class _VendingItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Тип шины',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
-                Text(
-                  'MDB',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
+                Detail(title: 'Тип шины'),
+                Detail(title: 'MDB'),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Уровень сигнала',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
-                Text(
-                  'Стабильный',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
+                Detail(title: 'Уровень сигнала'),
+                Detail(title: 'Стабильный'),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Идентификатор',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
-                Text(
-                  '13856646',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
+                Detail(title: 'Идентификатор'),
+                Detail(title: '13856646'),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Модем',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
-                Text(
-                  '3463457365',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                    color: Color(0xFF333333),
-                  ),
-                ),
+                Detail(title: 'Модем'),
+                Detail(title: '34634557365'),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Detail extends StatelessWidget {
+  const Detail({super.key, required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontWeight: FontWeight.w300,
+        fontSize: 14,
+        color: Color(0xFF333333),
       ),
     );
   }

@@ -11,7 +11,7 @@ class _ToggleButtonsSampleState extends State<ToggleButtonsSample> {
   final List<Widget> modes = <Widget>[
     const Padding(
       padding: EdgeInsets.symmetric(horizontal: 32),
-      child: Text('Используется'),
+      child: Text('Изпользуется'),
     ),
     const Padding(
       padding: EdgeInsets.symmetric(horizontal: 32),
@@ -23,13 +23,15 @@ class _ToggleButtonsSampleState extends State<ToggleButtonsSample> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
-      width: double.infinity,
-      child: ToggleButtons(
+    return LayoutBuilder(builder: (context, constraints) {
+      return ToggleButtons(
+        constraints: BoxConstraints(
+          minWidth: constraints.maxWidth / 2 - 3,
+          minHeight: 40,
+          maxHeight: 40,
+        ),
         onPressed: (int index) {
           setState(() {
-            // The button that is tapped is set to true, and the others to false.
             for (int i = 0; i < _selectedModes.length; i++) {
               _selectedModes[i] = i == index;
             }
@@ -42,7 +44,7 @@ class _ToggleButtonsSampleState extends State<ToggleButtonsSample> {
         color: const Color(0xFF218CEF),
         isSelected: _selectedModes,
         children: modes,
-      ),
-    );
+      );
+    });
   }
 }

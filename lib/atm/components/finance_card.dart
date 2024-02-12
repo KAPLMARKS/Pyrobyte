@@ -14,10 +14,18 @@ class FinanceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-      elevation: 2,
-      color: const Color(0xFFFFFFFF),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(0, 2),
+            blurRadius: 4,
+            color: Color(0x0A005BA9),
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
