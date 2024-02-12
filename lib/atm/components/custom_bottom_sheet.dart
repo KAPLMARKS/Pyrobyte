@@ -264,7 +264,7 @@ class CustomBottomSheet extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 30),
+                  padding: const EdgeInsets.only(bottom: 30),
                   child: SizedBox(
                     height: 56,
                     width: double.infinity,
