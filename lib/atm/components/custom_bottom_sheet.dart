@@ -25,6 +25,7 @@ class CustomBottomSheet extends StatelessWidget {
               children: [
                 AppBar(
                   titleSpacing: 0,
+                  scrolledUnderElevation: 0.0,
                   backgroundColor: Colors.white,
                   automaticallyImplyLeading: false,
                   title: const Text(
